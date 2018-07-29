@@ -69,8 +69,8 @@ class OpenWeatherMap(object):
             processed_forecasts.append(processed_forecast)
 
         city_info = {
-            'name': city_name,
-            'country_code': city_country,
+            'name': city_name.lower(),
+            'country_code': city_country.lower(),
             'forecasts': processed_forecasts,
         }
 
