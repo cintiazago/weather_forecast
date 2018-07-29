@@ -7,10 +7,9 @@ class City(models.Model):
     """
     name = models.CharField(max_length=100)
     country_code = models.CharField(max_length=10)
-    population = models.IntegerField()
 
     def __str__(self):
-        return self.name
+        return '{}, {}'.format(self.name, self.country_code)
 
 
 class Forecast(models.Model):
@@ -21,22 +20,22 @@ class Forecast(models.Model):
     date = models.DateField()
     time = models.TimeField()
     # temperatures saved with Unit as Kelvin
-    temperature = models.FloatField()
-    max_temperature = models.FloatField()
-    min_temperature = models.FloatField()
+    temperature = models.FloatField(null=True)
+    max_temperature = models.FloatField(null=True)
+    min_temperature = models.FloatField(null=True)
     # pressures saved with unit as Atmospheric pressure (hPa)
-    pressure = models.FloatField()
-    pressure_at_sea = models.FloatField()
-    pressure_at_ground = models.FloatField()
+    pressure = models.FloatField(null=True)
+    pressure_at_sea = models.FloatField(null=True)
+    pressure_at_ground = models.FloatField(null=True)
     # humidity and cloudiness as percentage
-    humidity = models.FloatField()
-    cloudiness = models.FloatField()
-    weather_description = models.CharField(max_length=250)
+    humidity = models.FloatField(null=True)
+    cloudiness = models.FloatField(null=True)
+    weather_description = models.CharField(max_length=250, null=True)
     # wind speed as meter/sec
-    wind_speed = models.FloatField()
-    wind_degrees = models.FloatField()
+    wind_speed = models.FloatField(null=True)
+    wind_degrees = models.FloatField(null=True)
 
     def __str__(self):
-        return 'Forecast for %s on %s at %s'.format(self.city.name,
+        return 'Forecast for {} on {} at {}'.format(self.city.name,
                                                     str(self.date),
                                                     str(self.time))
