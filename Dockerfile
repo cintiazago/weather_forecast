@@ -11,6 +11,9 @@ RUN mkdir /config
 # Add requirements file to config directory
 ADD /config/requirements.pip /config/
 
+# Add json data for initial import to config directory
+ADD /config/lewisham-forecast.json /config/d
+
 # Install requirements
 RUN pip install -r /config/requirements.pip
 
