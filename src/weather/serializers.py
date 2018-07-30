@@ -1,3 +1,5 @@
+import math
+
 from rest_framework import serializers
 from weather.models import Forecast
 
@@ -34,7 +36,10 @@ class ForecastSerializer(DynamicFieldsModelSerializer):
 
         # If temperature is requested change value from Kelvin to requested unit
         if 'temperature' in ret:
-            ret['temperature'] = instance.convert_temperature(self.context['temperature-units'])
-            ret['temperature-units'] = self.context['temperature-units']
+            temperature_units = self.context.get('temperature-units', 'K')
+            ret['temperature'] = math.ceil(instance.convert_temperature(temperature_units))
+            ret['temperature-units'] = temperature_units
+        if 'pressure' in ret:
+            ret['pressure-units'] = 'hPa'
 
         return ret
