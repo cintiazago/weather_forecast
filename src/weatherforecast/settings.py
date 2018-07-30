@@ -101,6 +101,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Rest Framework specific settings
+REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'weather.utils.custom_exception_handler'
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
