@@ -41,5 +41,8 @@ class ForecastSerializer(DynamicFieldsModelSerializer):
             ret['temperature-units'] = temperature_units
         if 'pressure' in ret:
             ret['pressure-units'] = 'hPa'
+        if 'humidity' in ret:
+            ret['humidity'] = str(ret['humidity']) + '%'
+            ret['humidity-units'] = 'percentage (%)'
 
         return ret
