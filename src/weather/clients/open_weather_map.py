@@ -62,7 +62,7 @@ class OpenWeatherMap(object):
                 'pressure_at_ground': main_forecast_info.get('rnd_level'),
                 'humidity': main_forecast_info.get('humidity'),
                 'cloudiness': cloud_forecast.get('all'),
-                'weather_description': forecast_description.get('description'),
+                'description': forecast_description.get('description'),
                 'wind_speed': wind_forecast.get('speed'),
                 'wind_degrees': wind_forecast.get('deg'),
             }
