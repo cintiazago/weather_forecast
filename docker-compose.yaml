@@ -14,7 +14,7 @@ services:
     image: xmaps/weather_forecast:latest
     build: .
     container_name: dg01
-    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py import_data ../config/lewisham-forecast.json && gunicorn weatherforecast.wsgi -b 0.0.0.0:8000"
+    command: bash -c "python manage.py makemigrations && python manage.py makemigrations weather && python manage.py migrate && python manage.py import_data ../config/lewisham-forecast.json && gunicorn weatherforecast.wsgi -b 0.0.0.0:8000"
     volumes:
       - ./src:/src
     expose:
