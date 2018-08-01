@@ -72,7 +72,7 @@ class ForecastDetail(APIView):
                                    status.HTTP_400_BAD_REQUEST)
         return operation_name
 
-    def get(self, request, operation_name, forecast_date, forecast_hour):
+    def get(self, request, operation_name, forecast_date, forecast_hour, format=None):
 
         requested_date, requested_time = self.check_requested_time(forecast_date,
                                                                   forecast_hour)
