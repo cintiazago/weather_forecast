@@ -61,3 +61,14 @@ Feature: Get Forecast Details
        | /weather/temperature/lewisham/20170729/0900/ | 404 | {"detail": "Unfortunately there's no forecast data for 2017-07-29 09:00", "status": "error", "status_code": 404} |
        | /weather/pressure/lewisham/20180729/1000/ | 404 | {"detail": "Unfortunately there's no forecast data for 2018-07-29 10:00", "status": "error", "status_code": 404 } |
        | /weather/humidity/lewisham/20180729/1000/ | 404 | {"detail": "Unfortunately there's no forecast data for 2018-07-29 10:00", "status": "error", "status_code": 404 } |
+
+
+    Scenario: Access forecast details after getting the summary
+
+      Given the system contains forecast data
+      When I visit "/weather/summary/lewisham/20180729/0900/"
+      Then it should return response an OK status code
+      And it should contain the forecast summary content {"description": "cloudy", "temperature": -18, "pressure": 1003.42, "humidity": "70.0%", "temperature-units": "C", "pressure-units": "hPa", "humidity-units": "percentage (%)"}
+      When I visit "/weather/temperature/lewisham/20180729/0900/"
+      Then it should return response an OK status code
+      And it should contain the forecast details content {"temperature": -18, "temperature-units": "C" }
