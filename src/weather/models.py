@@ -20,17 +20,17 @@ class Forecast(models.Model):
     date = models.DateField()
     time = models.TimeField()
     # temperatures saved with Unit as Kelvin
-    temperature = models.FloatField(null=True)
+    temperature = models.FloatField()
     max_temperature = models.FloatField(null=True)
     min_temperature = models.FloatField(null=True)
     # pressures saved with unit as Atmospheric pressure (hPa)
-    pressure = models.FloatField(null=True)
+    pressure = models.FloatField()
     pressure_at_sea = models.FloatField(null=True)
     pressure_at_ground = models.FloatField(null=True)
     # humidity and cloudiness as percentage
-    humidity = models.FloatField(null=True)
+    humidity = models.FloatField()
     cloudiness = models.FloatField(null=True)
-    description = models.CharField(max_length=250, null=True)
+    description = models.CharField(max_length=250)
     # wind speed as meter/sec
     wind_speed = models.FloatField(null=True)
     wind_degrees = models.FloatField(null=True)
